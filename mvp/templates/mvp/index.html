@@ -1,5 +1,35 @@
 <form action="" method="post">
     {% csrf_token %}
-    {{ form }}
+    <div id="first">
+      <p id="object">Object: <input type="text" name="object"></p>
+      <p id="question">Quetion: <input type="text" name="question"></p>
+      <p id="answer">Answer: <input type="text" name="answer"></p>
+    </div>
     <input type="submit" value="Submit">
 </form>
+
+<button type="button" onclick="addObject()">Add object</button>
+<button type="button" onclick="addQuestionAndAnswer()" id="button">Add question and answer</button>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<script>
+
+$("#button").insertAfter("#object");
+var count_object = 0;
+var qAndAcount = 0;
+
+function addObject() {
+  $("#object").clone().attr("id","object".concat(count_object.toString(10))).insertAfter("#first");
+  $("#button").clone().attr("id","button".concat(count_object.toString(10))).insertAfter("#object".concat(count_object.toString(10)));
+  count_object += 1;
+}
+
+function addQuestionAndAnswer() {
+  $("#question").clone().insertAfter("#first");
+  $("#answer").clone().insertAfter("#first");
+  qAndAcount += 1;
+}
+
+</script>

@@ -7,10 +7,12 @@ from .forms import NameForm
 def index(request):
 
     if request.method == 'POST':
-        name = request.POST["your_name"]
+        object = request.POST["object"]
+        question = request.POST["question"]
+        answer = request.POST["answer"]
         form = NameForm(request.POST)
         if form.is_valid():
-            return render(request, 'mvp/thanks.html', {'name': name})
+            return render(request, 'mvp/thanks.html', {'object': object, 'question': question, 'answer': answer})
 
     else:
         form = NameForm()
